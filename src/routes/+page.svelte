@@ -1,15 +1,15 @@
 <script>
-  import { uniq, map } from 'lodash'
-
+  import _ from 'lodash';
+  
   export let data;
   let csvData = data.data
 
-  const wijken = map(csvData, 'Wijk')
-  const bouwjaren = map(csvData, 'Bouwjaar')
-  const hoogtes = map(csvData, 'Hoogte')
-  const groenen = map(csvData, 'Groen')
-  const hittes = map(csvData, 'Hitte')
-  const wateroverlasten = map(csvData, 'Wateroverlast')
+  const wijken = _.map(csvData, 'Wijk')
+  const bouwjaren = _.map(csvData, 'Bouwjaar')
+  const hoogtes = _.map(csvData, 'Hoogte')
+  const groenen = _.map(csvData, 'Groen')
+  const hittes = _.map(csvData, 'Hitte')
+  const wateroverlasten = _.map(csvData, 'Wateroverlast')
 
   const gebouwhoogte = {
     '2,6':'midden',
