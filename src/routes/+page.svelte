@@ -1,6 +1,7 @@
 <script>
   import _ from 'lodash';
-  
+  import { onMount } from 'svelte'
+  import { selectAll, scaleLinear } from 'd3'
   export let data;
   let csvData = data.data
 
@@ -14,14 +15,53 @@
   const gebouwhoogte = {
     '2,6':'midden',
     '1,4':'laag',
-    '3,10':'hooglaag',
-    '4,10':'hooglaag',
+    '3,10':'hoog',
+    '4,10':'hoog',
     '3,5':'midden',
     '2,3':'laag',
     '2,4':'laag',
     '4,6':'midden',
     '3,5':'midden'
   }
+
+  const klasse = {
+    '1':'Laag',
+    '2':'Midden',
+    '3':'Hoog'
+  }
+  
+  const bouwjaarScale = {
+    'Voor 1910':[1870, 1910],
+    'Voor 1945':[1870, 1945],
+    'Van alle tijden':[1870, 2010],
+    'Na 1945':[1945, 2010],
+    'Na 1960':[1960, 2010]
+  }
+
+  onMount(() => {
+    const elem = document.querySelector(".tdbouwjaar");
+    const box = elem.getBoundingClientRect();
+    const cellWidth = box.width
+    const cellHeight = box.height
+
+    const xScale = scaleLinear()
+      .domain([1870, 2010])
+      .range([0, cellWidth-0]);
+
+    selectAll('line')
+      .data(bouwjaren)
+        .attr('x1', d => {
+          if(d.includes('-')){return xScale(+d.split('-')[0])}
+          else{console.log(d);return xScale(bouwjaarScale[d][0])}
+        })
+        .attr('x2', d => {
+          if(d.includes('-')){return xScale(+d.split('-')[1])}
+          else{return xScale(bouwjaarScale[d][1])}
+        })        
+        .attr('y1', cellHeight/2-15)
+        .attr('y2', cellHeight/2-15)
+
+  })
 
 </script>
 
@@ -35,11 +75,13 @@
   <tr>
     <td class='tdimage'>
       <img class='category_image' src='/images/bouwjaar.png'/>
-      <p>Bouwjaar</p>
+      <p class='category_tekst'>Bouwjaar</p>
     </td>
     {#each bouwjaren as bouwjaar, i}
-      <td>
-        <!-- ANNO -->
+      <td class='tdbouwjaar'>
+        <svg>
+          <line x1="0" x2="100" stroke="steelblue" stroke-width='8'/>
+        </svg>
         {bouwjaar}
       </td>
     {/each}
@@ -47,12 +89,12 @@
   <tr>
     <td class='tdimage'>
       <img class='category_image' src='/images/hoogte.png'/>
-      <p>Hoogte</p>
+      <p class='category_tekst'>Hoogte</p>
     </td>
     {#each hoogtes as hoogte, i}
       <td>        
         {#if hoogte}
-          <img src='/images/{gebouwhoogte[hoogte]}.png' style="width:40%" />
+          <img class='hoogteimage' src='/images/{gebouwhoogte[hoogte]}.png'/>
           <p class='hoogtetekst'>{hoogte.split(',')[0] + ' tot ' + hoogte.split(',')[1] + ' lagen'}</p>
         {/if}
       </td>
@@ -61,7 +103,7 @@
   <tr>
     <td class='tdimage'>
       <img class='category_image' src='/images/groen.png'/>
-      <p>Groen</p>
+      <p class='category_tekst'>Groen</p>
     </td>
     {#each groenen as groen, i}  
       <td>
@@ -75,13 +117,13 @@
   <tr>
     <td class='tdimage'>
       <img class='category_image' src='/images/hitte.png'/>
-      <p>Hitte</p>
+      <p class='category_tekst'>Hitte</p>
     </td>
     {#each hittes as hitte, i}
       <td>
         {#if hitte}
-          <img src='/images/hitte{hitte}.png' style='width:30%'/>
-          <p>{hitte}</p>
+          <img src='/images/hitte{hitte}.png' style='width:{15+hitte*7}%'/>
+          <p>{klasse[hitte]}</p>
         {/if}
       </td>
     {/each}
@@ -89,13 +131,13 @@
   <tr>
     <td class='tdimage'>
       <img class='category_image' src='/images/wateroverlast.png'/>
-      <p>Water-overlast</p>
+      <p class='category_tekst'>Wateroverlast</p>
     </td>
     {#each wateroverlasten as wateroverlast, i}
       <td>
         {#if wateroverlast}
-          <img src='/images/wateroverlast{wateroverlast}.png' style='width:16%'/>
-          <p>{wateroverlast}</p>
+          <img src='/images/wateroverlast{wateroverlast}.png' style='width:{8+wateroverlast*3}%'/>
+          <p>{klasse[wateroverlast]}</p>
         {/if}
       </td>
     {/each}
@@ -107,16 +149,16 @@
     width:98vw;
     height:97vh;
     table-layout: fixed;
-    border-spacing: 5px 5px;
+    border-spacing: 3px 3px;
   }
 
   td{
-    background-color: #f8f8f9;
+    background-color: #e4e4e4;
     text-align: center;
     position: relative;
     color:rgb(96, 96, 96);
     height:16vh;
-    font-size:14px;
+    font-size:10px;
   }
   th{
     font-size:12px;
@@ -129,6 +171,9 @@
   .category_image{
     width:50%;
   }
+  .category_tekst{
+    font-size: 14px;
+  }
   p{
     text-align: center;
     position:absolute;
@@ -137,8 +182,19 @@
     margin-bottom: 0px;
   }
 
-  .hoogtetekst{
-    font-size:10px;
+  .hoogteimage{
+    position: absolute;
+    bottom:20px;
+    width:40%;
+    left:30%;
+  }
+
+  svg{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
   }
 
 </style>
