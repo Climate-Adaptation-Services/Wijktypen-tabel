@@ -161,7 +161,7 @@
     font-size:0.95vw;
   }
   th{
-    font-size:14px;
+    font-size:0.9vw;
     color:rgb(96, 96, 96);
     word-wrap: break-word;
   }
