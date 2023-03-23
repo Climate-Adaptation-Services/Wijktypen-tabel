@@ -80,7 +80,7 @@
     {#each bouwjaren as bouwjaar, i}
       <td class='tdbouwjaar'>
         <svg>
-          <line x1="0" x2="100" stroke="steelblue" stroke-width='8'/>
+          <line x1="0" x2="100" stroke="steelblue" stroke-width='12'/>
         </svg>
         {bouwjaar}
       </td>
