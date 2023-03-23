@@ -158,7 +158,7 @@
     position: relative;
     color:rgb(96, 96, 96);
     height:16vh;
-    font-size:10px;
+    font-size:1vw;
   }
   th{
     font-size:14px;
