@@ -69,7 +69,7 @@
   <tr>
     <th></th>
     {#each wijken as wijk, i}
-      <th>{wijk}</th>
+      <th style="background-image:url('/images/foto.png')">{wijk}</th>
     {/each}
   </tr>
   <tr>
@@ -153,7 +153,7 @@
   }
 
   td{
-    background-color: #e4e4e4;
+    background-color: #e9ecf5;
     text-align: center;
     position: relative;
     color:rgb(96, 96, 96);
@@ -162,8 +162,10 @@
   }
   th{
     font-size:0.9vw;
-    color:rgb(96, 96, 96);
+    /* color:rgb(96, 96, 96); */
+    color:white;
     word-wrap: break-word;
+    font-weight:normal;
   }
   .tdimage{
     background-color: white;
