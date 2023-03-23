@@ -175,7 +175,7 @@
     width:50%;
   }
   .category_tekst{
-    font-size: 14px;
+    font-size: 0.9vw;
   }
   p{
     text-align: center;
