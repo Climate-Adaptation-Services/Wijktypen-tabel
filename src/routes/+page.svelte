@@ -146,7 +146,7 @@
 
 <style>
   table{
-    width:98vw;
+    width:99vw;
     height:97vh;
     table-layout: fixed;
     border-spacing: 3px 3px;
