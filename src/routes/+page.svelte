@@ -20,7 +20,7 @@
     '3,5':'midden',
     '2,3':'laag',
     '2,4':'laag',
-    '4,6':'midden',
+    '4,6':'5lagen',
     '3,5':'midden'
   }
 
