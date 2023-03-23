@@ -69,7 +69,7 @@
   <tr>
     <th></th>
     {#each wijken as wijk, i}
-      <th style="background-image:url('/images/foto.png')">{wijk}</th>
+      <th style="background-image:url('/images/{wijk}.png'); background-size: 100% 100%">{wijk}</th>
     {/each}
   </tr>
   <tr>
