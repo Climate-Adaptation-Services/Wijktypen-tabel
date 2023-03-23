@@ -158,7 +158,7 @@
     position: relative;
     color:rgb(96, 96, 96);
     height:16vh;
-    font-size:1vw;
+    font-size:0.95vw;
   }
   th{
     font-size:14px;
@@ -185,7 +185,7 @@
 
   .hoogteimage{
     position: absolute;
-    bottom:20px;
+    bottom:25px;
     width:40%;
     left:30%;
   }
