@@ -74,7 +74,7 @@
   </tr>
   <tr>
     <td class='tdimage'>
-      <img class='category_image' src='/images/bouwjaar.png'/>
+      <img class='category_image' src='/images/calendar.png'/>
       <p class='category_tekst'>Bouwjaar</p>
     </td>
     {#each bouwjaren as bouwjaar, i}
@@ -88,7 +88,7 @@
   </tr>
   <tr>
     <td class='tdimage'>
-      <img class='category_image' src='/images/hoogte.png'/>
+      <img class='category_image' src='/images/building.png'/>
       <p class='category_tekst'>Hoogte</p>
     </td>
     {#each hoogtes as hoogte, i}
@@ -102,7 +102,7 @@
   </tr>
   <tr>
     <td class='tdimage'>
-      <img class='category_image' src='/images/groen.png'/>
+      <img class='category_image' src='/images/forest.png'/>
       <p class='category_tekst'>Groen</p>
     </td>
     {#each groenen as groen, i}  
@@ -116,7 +116,7 @@
   </tr>
   <tr>
     <td class='tdimage'>
-      <img class='category_image' src='/images/hitte.png'/>
+      <img class='category_image' src='/images/sun.png'/>
       <p class='category_tekst'>Hitte</p>
     </td>
     {#each hittes as hitte, i}
@@ -130,7 +130,7 @@
   </tr>
   <tr>
     <td class='tdimage'>
-      <img class='category_image' src='/images/wateroverlast.png'/>
+      <img class='category_image' src='/images/rain.png'/>
       <p class='category_tekst'>Wateroverlast</p>
     </td>
     {#each wateroverlasten as wateroverlast, i}
@@ -161,8 +161,9 @@
     font-size:10px;
   }
   th{
-    font-size:12px;
-    color:rgb(96, 96, 96)
+    font-size:14px;
+    color:rgb(96, 96, 96);
+    word-wrap: break-word;
   }
   .tdimage{
     background-color: white;
