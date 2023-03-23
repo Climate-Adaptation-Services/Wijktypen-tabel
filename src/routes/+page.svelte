@@ -58,8 +58,8 @@
           if(d.includes('-')){return xScale(+d.split('-')[1])}
           else{return xScale(bouwjaarScale[d][1])}
         })        
-        .attr('y1', cellHeight/2-15)
-        .attr('y2', cellHeight/2-15)
+        .attr('y1', cellHeight/2-20)
+        .attr('y2', cellHeight/2-20)
 
   })
 
@@ -80,7 +80,7 @@
     {#each bouwjaren as bouwjaar, i}
       <td class='tdbouwjaar'>
         <svg>
-          <line x1="0" x2="100" stroke="steelblue" stroke-width='12'/>
+          <line stroke="steelblue" stroke-width='12'/>
         </svg>
         {bouwjaar}
       </td>
