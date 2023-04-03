@@ -16,6 +16,7 @@
     '2,6':'midden',
     '1,4':'laag',
     '3,10':'hoog',
+    '6,10':'hoger',
     '4,10':'hoog',
     '3,5':'midden',
     '2,3':'laag',
@@ -58,8 +59,8 @@
           if(d.includes('-')){return xScale(+d.split('-')[1])}
           else{return xScale(bouwjaarScale[d][1])}
         })        
-        .attr('y1', cellHeight/2-20)
-        .attr('y2', cellHeight/2-20)
+        .attr('y1', cellHeight/2 - 3)
+        .attr('y2', cellHeight/2 - 3)
 
   })
 
@@ -69,7 +70,7 @@
   <tr>
     <th></th>
     {#each wijken as wijk, i}
-      <th style="background-image:url('/images/{wijk}.png'); background-size: 100% 100%">{wijk}</th>
+      <th style="background-image:url('/images/wijken/{wijk}.png'); background-size: 100% 100%">{wijk}</th>
     {/each}
   </tr>
   <tr>
@@ -82,7 +83,7 @@
         <svg>
           <line stroke="steelblue" stroke-width='12'/>
         </svg>
-        {bouwjaar}
+        <p class='category_tekst'>{bouwjaar}</p>
       </td>
     {/each}
   </tr>
@@ -108,7 +109,7 @@
     {#each groenen as groen, i}  
       <td>
         {#if groen}
-          <img src='/images/tree.png' style="width:{groen*1.6}%" />
+          <img src='/images/tree.png' style="width:{groen*1.3}%" />
           <p>{groen}%</p>
         {/if}
       </td>
@@ -122,7 +123,7 @@
     {#each hittes as hitte, i}
       <td>
         {#if hitte}
-          <img src='/images/hitte{hitte}.png' style='width:{15+hitte*7}%'/>
+          <img src='/images/hitte{hitte}.png' style='width:{12+hitte*7}%'/>
           <p>{klasse[hitte]}</p>
         {/if}
       </td>
@@ -136,7 +137,7 @@
     {#each wateroverlasten as wateroverlast, i}
       <td>
         {#if wateroverlast}
-          <img src='/images/wateroverlast{wateroverlast}.png' style='width:{8+wateroverlast*3}%'/>
+          <img src='/images/wateroverlast{wateroverlast}.png' style='width:{4+wateroverlast*3}%'/>
           <p>{klasse[wateroverlast]}</p>
         {/if}
       </td>
@@ -157,7 +158,7 @@
     text-align: center;
     position: relative;
     color:rgb(96, 96, 96);
-    height:16vh;
+    height:15vh;
     font-size:0.95vw;
   }
   th{
@@ -166,6 +167,11 @@
     color:white;
     word-wrap: break-word;
     font-weight:normal;
+    text-shadow:
+    -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
   }
   .tdimage{
     background-color: white;
@@ -188,8 +194,8 @@
   .hoogteimage{
     position: absolute;
     bottom:25px;
-    width:40%;
-    left:30%;
+    width:30%;
+    left:35%;
   }
 
   svg{
