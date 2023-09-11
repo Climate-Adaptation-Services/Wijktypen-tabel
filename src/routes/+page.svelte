@@ -9,6 +9,7 @@
   const bouwjaren = _.map(csvData, 'Bouwjaar')
   const hoogtes = _.map(csvData, 'Hoogte')
   const groenen = _.map(csvData, 'Groen')
+  const groenranges = _.map(csvData, 'GroenRange')
   const hittes = _.map(csvData, 'Hitte')
   const wateroverlasten = _.map(csvData, 'Wateroverlast')
 
@@ -110,7 +111,7 @@
       <td>
         {#if groen}
           <img src='/images/tree.png' style="width:{groen*1.3}%" />
-          <p>{groen}%</p>
+          <p>{@html (wijken[i] === 'Vernieuwd') ? groenranges[i]+'% <br>(Q1 tot Q3)' : groenranges[i]+'%'}</p>
         {/if}
       </td>
     {/each}
