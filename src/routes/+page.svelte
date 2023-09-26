@@ -111,7 +111,7 @@
       <td>
         {#if groen}
           <img src='/images/tree.png' style="width:{groen*1.3}%" />
-          <p>{@html (wijken[i] === 'Vernieuwd') ? groenranges[i]+'% <br>(Q1 tot Q3)' : groenranges[i]+'%'}</p>
+          <p>{groenranges[i]+'%'}</p>
         {/if}
       </td>
     {/each}
